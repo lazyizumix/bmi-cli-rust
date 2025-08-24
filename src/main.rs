@@ -22,7 +22,14 @@ fn get_line() -> f64 {
         io::stdin().read_line(&mut line).expect("入力エラー");
 
         match line.trim().parse() {
-            Ok(num) => break num,
+            Ok(num) => {
+                if num > 0.0 {
+                    break num;
+                } else {
+                    println!("0より大きい数を入力してください");
+                    continue;
+                }
+            }
             Err(_) => {
                 println!("数値を入力してください！");
                 continue;
